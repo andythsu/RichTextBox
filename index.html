@@ -56,8 +56,8 @@
 var op = new font();
 
 $(document).on("mousedown", ".fa-bold", function(){
-  var selection = window.getSelection().toString();
-  if (!selection) {
+  var selection = window.getSelection();
+  if (!selection.toString()) {
     //if no selection
     if ($(this).hasClass("clicked")) {
       op.unbold();
@@ -67,18 +67,19 @@ $(document).on("mousedown", ".fa-bold", function(){
       $(this).addClass("clicked");
     }
   }else{
-    //if has selection
-    // var range = getSelectionRange();
-    // console.log(range);
-    // var text = op.boldSelection(selection, range);
-    // $(".email-content").html(text);
-    op.boldSelection();
+    if (selection.getRangeAt(0).startContainer.parentElement.localName != "b") {
+      console.log("bold selection");
+      op.boldSelection();
+    }else{
+      op.unboldSelection();
+      console.log("unbold selection");
+    }
   }
 });
 
 $(document).on("mousedown", ".fa-italic", function(){
-  var selection = window.getSelection().toString();
-  if (!selection) {
+  var selection = window.getSelection();
+  if (!selection.toString()) {
     //if no selection
     if ($(this).hasClass("clicked")) {
       op.unitalicize();
@@ -88,12 +89,13 @@ $(document).on("mousedown", ".fa-italic", function(){
       $(this).addClass("clicked");
     }
   }else{
-    //if has selection
-    // var range = getSelectionRange();
-    // console.log(range);
-    // var text = op.italicizeSelection(selection, range);
-    // $(".email-content").html(text);
-    op.italicizeSelection();
+    if (selection.getRangeAt(0).startContainer.parentElement.localName != "i") {
+      console.log("italicize selection");
+      op.italicizeSelection();
+    }else{
+      op.unitalicizeSelection();
+      console.log("unitalicize selection");
+    }
   }
 });
 
