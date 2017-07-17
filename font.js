@@ -21,11 +21,17 @@ class font{
     b.appendChild(content);
     selection.insertNode(b);
   }
-  italicizeSelection(){    
+  italicizeSelection(){
     var selection = window.getSelection().getRangeAt(0);
     var content = selection.extractContents();
     var i = document.createElement("i");
     i.appendChild(content);
     selection.insertNode(i);
+  }
+  href(name, link){
+    var a = document.createElement("a");
+    a.href = link;
+    a.innerHTML = name;
+    this.email_content.append(a);
   }
 }
