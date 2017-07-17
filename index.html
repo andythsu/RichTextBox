@@ -13,14 +13,6 @@
   <title></title>
 </head>
 <style>
-body{
-  /*margin-left: 300px;*/
-  /*margin-top: 50px;*/
-  /*position: absolute;
-  top: 0; bottom: 0; left: 0; right: 0;
-  margin: auto;*/
-  display: block;
-}
 .email-content{
   height: 400px;
   width: 400px;
@@ -181,9 +173,13 @@ $(document).on("click", "#add_link_enter", function(){
     $("span[name=email-link-warning-span]").show();
     return;
   }else{
-    op.href(text, link);
+    if (text == "") {
+      op.href(link, link);
+    }else{
+      op.href(text, link);
+    }
   }
-
+  
   //normal mode
   $("input[name=text_input]").val("");
   $("input[name=link_input]").val("");
