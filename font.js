@@ -3,15 +3,19 @@ class font{
     this.email_content = $(".email-content");
   }
   bold(){
+    // this.email_content.append("<span style = \"font-weight: bold\">text</span>");
     this.email_content.append("<b>text</b>");
   }
   italicize(){
+    // this.email_content.append("<span style = \"font-style: italic\">text</span>");
     this.email_content.append("<i>text</i>");
   }
   unbold(){
+    // this.email_content.append("<span style = \"font-weight: normal\">text</span>");
     this.email_content.append("text");
   }
   unitalicize(){
+    // this.email_content.append("<span style = \"font-style: normal\">text</span>");
     this.email_content.append("text");
   }
   boldSelection(){

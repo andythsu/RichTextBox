@@ -90,6 +90,7 @@ $(document).on("mousedown", ".fa-italic", function(){
     }
   }else{
     if (selection.getRangeAt(0).startContainer.parentElement.localName != "i") {
+      console.log("selection range: " , selection.getRangeAt(0));
       console.log("italicize selection");
       op.italicizeSelection();
     }else{
