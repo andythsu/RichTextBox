@@ -3,21 +3,22 @@ class font{
     this.email_content = $(".email-content");
   }
   bold(){
-    this.email_content.append("<b>text</b>");
+    this.email_content.append("<b>&#65279;</b>");
   }
   italicize(){
-    this.email_content.append("<i>text</i>");
+    this.email_content.append("<i>&#65279;</i>");
   }
   unbold(){
-    this.email_content.append("text");
+    this.email_content.append("&#65279;");
   }
   unitalicize(){
-    this.email_content.append("text");
+    this.email_content.append("&#65279;");
   }
   boldSelection(){
     var range = window.getSelection().getRangeAt(0);
     // console.log(range);
     var content = range.extractContents();
+    console.log("content is : " , content.toString());
     var b = document.createElement("b");
     b.appendChild(content);
     range.insertNode(b);
