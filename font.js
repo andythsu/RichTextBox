@@ -27,8 +27,6 @@ class font{
     range.insertNode(b);
   }
 
-
-
   unboldSelection(){
     var selection = window.getSelection();
     var range = selection.getRangeAt(0);
