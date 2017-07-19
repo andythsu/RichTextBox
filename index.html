@@ -67,7 +67,7 @@ $(document).on("mousedown", ".fa-bold", function(){
       $(this).addClass("clicked");
     }
   }else{
-    if (selection.getRangeAt(0).startContainer.parentElement.localName != "b") {
+    if (selection.getRangeAt(0).startContainer.parentElement.localName != "strong") {
       console.log("bold selection");
       op.boldSelection();
     }else{
@@ -89,7 +89,7 @@ $(document).on("mousedown", ".fa-italic", function(){
       $(this).addClass("clicked");
     }
   }else{
-    if (selection.getRangeAt(0).startContainer.parentElement.localName != "i") {
+    if (selection.getRangeAt(0).startContainer.parentElement.localName != "em") {
       console.log("selection range: " , selection.getRangeAt(0));
       console.log("italicize selection");
       op.italicizeSelection();

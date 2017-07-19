@@ -19,7 +19,7 @@ class font{
     // console.log(range);
     var content = range.extractContents();
     console.log("content is : " , content.toString());
-    var b = document.createElement("b");
+    var b = document.createElement("strong");
     b.appendChild(content);
     range.insertNode(b);
   }
@@ -93,7 +93,7 @@ class font{
   italicizeSelection(){
     var range = window.getSelection().getRangeAt(0);
     var content = range.extractContents();
-    var i = document.createElement("i");
+    var i = document.createElement("em");
     i.appendChild(content);
     range.insertNode(i);
   }
