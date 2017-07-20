@@ -46,8 +46,6 @@ class font{
     // range.startContainer.parentElement.parentElement.insertNode(textNode);
     range.insertNode(span);
 
-    this.removeEmptyTags();
-
     // var whole_text = this.email_content.html();
     //
     // var range_data = this.getRange();
@@ -188,7 +186,7 @@ class font{
         console.log("text content: ", arr[i].textContent);
         if (arr[i].textContent == "") {
           arr[i].remove();
-          console.log("removed");
+          console.log("removed empty tag: ", arr[i]);
         }
       }
     });
