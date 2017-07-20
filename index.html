@@ -67,7 +67,9 @@ $(document).on("mousedown", ".fa-bold", function(){
       $(this).addClass("clicked");
     }
   }else{
-    if (selection.getRangeAt(0).startContainer.parentElement.localName != "strong") {
+    var localName = selection.getRangeAt(0).startContainer.parentElement.localName;
+    console.log("selection.getRange: ", selection.getRangeAt(0));
+    if (localName != "strong" && localName != "b") {
       console.log("bold selection");
       op.boldSelection();
     }else{
@@ -89,8 +91,8 @@ $(document).on("mousedown", ".fa-italic", function(){
       $(this).addClass("clicked");
     }
   }else{
-    if (selection.getRangeAt(0).startContainer.parentElement.localName != "em") {
-      console.log("selection range: " , selection.getRangeAt(0));
+    var localName = selection.getRangeAt(0).startContainer.parentElement.localName;
+    if (localName != "em" && localName != "i") { //if it is not italicized yet
       console.log("italicize selection");
       op.italicizeSelection();
     }else{
@@ -133,7 +135,6 @@ $(document).on("click", "#add_link_enter", function(){
   $("span[name=email-link-warning-span]").hide();
   $(".overlay").hide();
 });
-
 
 // function getSelectionRange() {
 //   var sel;

@@ -3,10 +3,10 @@ class font{
     this.email_content = $(".email-content");
   }
   bold(){
-    this.email_content.append("<b>&#65279;</b>");
+    this.email_content.append("<strong>&#65279;</strong>");
   }
   italicize(){
-    this.email_content.append("<i>&#65279;</i>");
+    this.email_content.append("<em>&#65279;</em>");
   }
   unbold(){
     this.email_content.append("&#65279;");
@@ -27,14 +27,27 @@ class font{
   unboldSelection(){
     var selection = window.getSelection();
     var range = selection.getRangeAt(0);
-    // console.log("range is: " , range);
-    // var selection_text = selection.toString();
+    console.log("range is: " , range);
+
+    var selection_text = selection.toString();
+
+    var textNode = document.createTextNode(selection_text);
     var content = range.extractContents();
+
+    // range.deleteContents();
     var span = document.createElement("span");
-    span.appendChild(content);
     span.style.fontWeight = "normal";
+    span.appendChild(content);
+    // span.appendChild(textNode);
+
+    // range.startContainer.parentElement.parentElement.insertBefore(textNode, range.startContainer.parentElement);
+    // this.clearEmptyTags();
+
+    // range.startContainer.parentElement.parentElement.insertNode(textNode);
     range.insertNode(span);
-    //
+
+    this.removeEmptyTags();
+
     // var whole_text = this.email_content.html();
     //
     // var range_data = this.getRange();
@@ -93,7 +106,7 @@ class font{
   italicizeSelection(){
     var range = window.getSelection().getRangeAt(0);
     var content = range.extractContents();
-    var i = document.createElement("em");
+    var i = document.createElement("i");
     i.appendChild(content);
     range.insertNode(i);
   }
@@ -101,10 +114,14 @@ class font{
   unitalicizeSelection(){
     var selection = window.getSelection();
     var range = selection.getRangeAt(0);
-    console.log("range is: " , range);
-    var content = range.extractContents();
+    // console.log("range is: " , range);
+    var selection_text = selection.toString();
+    var textNode = document.createTextNode(selection_text);
+    // var content = range.extractContents();
+    range.deleteContents(); //delete the contents
     var span = document.createElement("span");
-    span.appendChild(content);
+    // span.appendChild(content);
+    span.appendChild(textNode);
     span.style.fontStyle = "normal";
     range.insertNode(span);
     // var selection_text = range.startContainer.textContent;
@@ -151,4 +168,31 @@ class font{
       end: end
     };
   }
+
+  removeEmptyTags(){
+    var spans = this.email_content.find("span");
+    var strong = this.email_content.find("strong");
+    var em = this.email_content.find("em");
+    var b = this.email_content.find("b");
+    var i = this.email_content.find("i");
+    var data = {
+      spans : spans,
+      b : b,
+      i : i,
+      em : em,
+      strong : strong
+    };
+
+    $.each(data, function(tag_name, arr){
+      for (var i = 0; i < arr.length; i++) {
+        console.log("text content: ", arr[i].textContent);
+        if (arr[i].textContent == "") {
+          arr[i].remove();
+          console.log("removed");
+        }
+      }
+    });
+
+  }
+
 }
