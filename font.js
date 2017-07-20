@@ -42,7 +42,7 @@ class font{
   italicizeSelection(){
     var range = window.getSelection().getRangeAt(0);
     var content = range.extractContents();
-    var i = document.createElement("i");
+    var i = document.createElement("em");
     i.appendChild(content);
     range.insertNode(i);
   }
@@ -111,12 +111,14 @@ class font{
     var em = this.email_content.find("em");
     var b = this.email_content.find("b");
     var i = this.email_content.find("i");
+    var a = this.email_content.find("a");
     var data = {
       spans : spans,
       b : b,
       i : i,
       em : em,
-      strong : strong
+      strong : strong,
+      a : a
     };
 
     $.each(data, function(tag_name, arr){

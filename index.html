@@ -67,9 +67,10 @@ $(document).on("mousedown", ".fa-bold", function(){
       $(this).addClass("clicked");
     }
   }else{
-    var localName = selection.getRangeAt(0).startContainer.parentElement.localName;
+    var localName_start = selection.getRangeAt(0).startContainer.parentElement.localName;
+    var localName_end = selection.getRangeAt(0).endContainer.parentElement.localName;
     console.log("selection.getRange: ", selection.getRangeAt(0));
-    if (localName != "strong" && localName != "b") {
+    if (localName_start != "strong" && localName_start != "b" && localName_end != "strong" && localName_end!="b") {
       console.log("bold selection");
       op.boldSelection();
     }else{
