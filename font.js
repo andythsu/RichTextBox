@@ -29,76 +29,14 @@ class font{
     var range = selection.getRangeAt(0);
     console.log("range is: " , range);
 
-    var selection_text = selection.toString();
-
-    var textNode = document.createTextNode(selection_text);
     var content = range.extractContents();
 
-    // range.deleteContents();
     var span = document.createElement("span");
     span.style.fontWeight = "normal";
     span.appendChild(content);
-    // span.appendChild(textNode);
 
-    // range.startContainer.parentElement.parentElement.insertBefore(textNode, range.startContainer.parentElement);
-    // this.clearEmptyTags();
-
-    // range.startContainer.parentElement.parentElement.insertNode(textNode);
     range.insertNode(span);
 
-    // var whole_text = this.email_content.html();
-    //
-    // var range_data = this.getRange();
-    // var start_point = range_data.start;
-    // var end_point = range_data.end;
-    //
-    // var start_offset = range.startOffset;
-    // var end_offset = range.endOffset;
-    //
-    // console.log("whole text: " , selection_text);
-    // if (start_point == 0) {
-    //   console.log("start_point is 0");
-    //   var before_str = "";
-    //   var current_str = selection_text.substring(start_offset, end_offset);
-    //   var remaining_str = selection_text.substring(end_offset+1);
-    // }else{
-    //   console.log("start_point is not 0");
-    //   var before_str = selection_text.substring(0, start_offset);
-    //   var current_str = selection_text.substring(start_offset, end_offset);
-    //   var remaining_str = selection_text.substring(end_offset+1);
-    // }
-    //
-    // before_str += "</b>";
-    // current_str += "<b>";
-    // remaining_str+="</b>";
-    //
-    // console.log("before_str", before_str);
-    // console.log("current_str", current_str);
-    // console.log("remaining_str", remaining_str);
-    // // var html_clone = this.email_content.html();
-    //
-    // var new_selection_text = before_str + current_str + remaining_str;
-    // console.log("start point: ", start_point);
-    // console.log("end point: ", end_point);
-    // console.log("start_offset: ", start_offset);
-    // console.log("end_offset: ", end_offset);
-    // console.log("new whole text: " , new_selection_text);
-    //
-    // // console.log("substring(end+1): ", this.email_content.text().substring(end+1));
-    // var before_html = this.email_content.html().substring(0, start_point);
-    // var current_html = new_selection_text;
-    // var after_html = this.email_content.html().substring(end_point+1);
-    //
-    // console.log("before_html: ", before_html);
-    // console.log("current_html: " , current_html);
-    // console.log("after_html : " , after_html);
-    //
-    //
-    // var html = before_html + current_html + after_html;
-    //
-    // console.log("html: " , html);
-    //
-    // this.email_content.html(html);
   }
 
   italicizeSelection(){
